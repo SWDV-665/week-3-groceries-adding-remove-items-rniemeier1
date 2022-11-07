@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Home
+      {{title}}
     </ion-title>
   </ion-toolbar>
   
@@ -14,136 +14,36 @@
     </ion-toolbar>
   </ion-header>
 
-  <!--app-explore-container name="Home"></app-explore-container-->
   <!--Grocery List-->
   <ion-content>
     <ion-list>
-      <ion-item-sliding>
-        <ion-item>
-          <ion-avatar item-start>
-            <img src="assets\plate.jpg">
-          </ion-avatar>
-          <h2>Lettuce</h2>
-        </ion-item>
-        <ion-item-options side="start">
-          <button ion-button color="primary">
-            <ion-icon name="add-circle-outline"></ion-icon>
-            Add Additional Items
-          </button>
-        </ion-item-options>
-        <ion-item-options side="end">
-          <button ion-button color="primary">
-            <ion-icon name="trash-outline"></ion-icon>
-            Remove from Cart
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
 
-      <ion-item-sliding>
+      <ion-item-sliding *ngFor="let item of items; let i = index">
         <ion-item>
           <ion-avatar item-start>
             <img src="assets\plate.jpg">
           </ion-avatar>
-          <h2>Milk</h2>
+          <h2>{{item.name}}</h2>
+          <p>{{item.quantity}}</p>
         </ion-item>
         <ion-item-options side="start">
           <button ion-button color="primary">
             <ion-icon name="add-circle-outline"></ion-icon>
-            Add Additional Items
+            Change Quantity
           </button>
         </ion-item-options>
         <ion-item-options side="end">
-          <button ion-button color="primary">
-            <ion-icon name="trash-outline"></ion-icon>
-            Remove from Cart
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
-
-      <ion-item-sliding>
-        <ion-item>
-          <ion-avatar item-start>
-            <img src="assets\plate.jpg">
-          </ion-avatar>
-          <h2>Apple</h2>
-        </ion-item>
-        <ion-item-options side="start">
-          <button ion-button color="primary">
-            <ion-icon name="add-circle-outline"></ion-icon>
-            Add Additional Items
-          </button>
-        </ion-item-options>
-        <ion-item-options side="end">
-          <button ion-button color="primary">
-            <ion-icon name="trash-outline"></ion-icon>
-            Remove from Cart
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
-
-      <ion-item-sliding>
-        <ion-item>
-          <ion-avatar item-start>
-            <img src="assets\plate.jpg">
-          </ion-avatar>
-          <h2>Pasta Sauce</h2>
-        </ion-item>
-        <ion-item-options side="start">
-          <button ion-button color="primary">
-            <ion-icon name="add-circle-outline"></ion-icon>
-            Add Additional Items
-          </button>
-        </ion-item-options>
-        <ion-item-options side="end">
-          <button ion-button color="primary">
-            <ion-icon name="trash-outline"></ion-icon>
-            Remove from Cart
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
-
-      <ion-item-sliding>
-        <ion-item>
-          <ion-avatar item-start>
-            <img src="assets\plate.jpg">
-          </ion-avatar>
-          <h2>Tomato</h2>
-        </ion-item>
-        <ion-item-options side="start">
-          <button ion-button color="primary">
-            <ion-icon name="add-circle-outline"></ion-icon>
-            Add Additional Items
-          </button>
-        </ion-item-options>
-        <ion-item-options side="end">
-          <button ion-button color="primary">
-            <ion-icon name="trash-outline"></ion-icon>
-            Remove from Cart
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
-
-      <ion-item-sliding>
-        <ion-item>
-          <ion-avatar item-start>
-            <img src="assets\plate.jpg">
-          </ion-avatar>
-          <h2>Corn</h2>
-        </ion-item>
-        <ion-item-options side="start">
-          <button ion-button color="primary">
-            <ion-icon name="add-circle-outline"></ion-icon>
-            Add Additional Items
-          </button>
-        </ion-item-options>
-        <ion-item-options side="end">
-          <button ion-button color="primary">
+          <button (click)="removeItem(item, i)" ion-button color="primary">
             <ion-icon name="trash-outline"></ion-icon>
             Remove from Cart
           </button>
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>
+
+    <ion-fab bottom right edge>
+      <button (click)="addItem()" ion-fab ><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
   </ion-content>
 </ion-content>
 
